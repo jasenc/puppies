@@ -28,34 +28,30 @@ Aug 17th, 2015 -->
         </div>
       </div>
     </nav>
-    <form class="well bs-component clearfix" action="{{ url_for('newShelter') }}" method="POST">
+    <form class="well bs-component clearfix" action="{{ url_for('newPuppy', shelter_id=shelter.id) }}" method="POST">
       <legend>New Puppy for {{ shelter.name }}</legend>
       <div class="form-group col-xs-12">
-        <label for="shelter-name">Name</label>
-        <input type="text" class="form-control"  id="shelter-name" placeholder="Name" name="name">
-      </div>
-      <div class="form-group col-xs-12">
-        <label for="shelter-address">Address</label>
-        <input type="text" class="form-control"  id="shelter-address" placeholder="Address" name="address">
-      </div>
-      <div class="form-group col-xs-6">
-        <label for="shelter-city">City</label>
-        <input type="text" class="form-control"  id="shelter-city" placeholder="City" name="city" maxlength="20">
-      </div>
-      <div class="form-group col-xs-2">
-        <label for="shelter-state">State</label>
-        <input type="text" class="form-control"  id="shelter-state" placeholder="State" name="state" maxlength="2">
+        <label for="puppy-name">Name</label>
+        <input type="text" class="form-control"  id="puppy-name" placeholder="Name" name="name">
       </div>
       <div class="form-group col-xs-4">
-        <label for="shelter-zipCode">Zipcode</label>
-        <input type="text" class="form-control"  id="shelter-zipCode" placeholder="Zipcode" name="zipCode" maxlength="10">
+        <label for="puppy-gender">Gender</label>
+        <input type="text" class="form-control"  id="puppy-gender" placeholder="Gender" name="gender" maxlength="6">
+      </div>
+      <div class="form-group col-xs-4">
+        <label for="puppy-dateOfBirth">Date of Birth</label>
+        <input type="text" class="form-control"  id="puppy-dateOfBirth" placeholder="Date of Birth" name="dateOfBirth" maxlength="20">
+      </div>
+      <div class="form-group col-xs-4">
+        <label for="puppy-weight">Weight</label>
+        <input type="text" class="form-control"  id="puppy-weight" placeholder="Weight" name="weight" maxlength="10">
       </div>
       <div class="form-group col-xs-12">
-        <label for="shelter-website">Website</label>
-        <input type="text" class="form-control"  id="shelter-website" placeholder="Website" name="website">
+        <label for="puppy-picture">Picture</label>
+        <input type="text" class="form-control"  id="puppy-picture" placeholder="Picture" name="picture">
       </div>
-      <a href="{{ url_for('index') }}" class="btn btn-default">Cancel</a>
-      <input type="submit" class="btn btn-success btn-right" value="Add Shelter">
+      <a href="{{ url_for('showShelter', shelter_id=shelter.id) }}" class="btn btn-default">Cancel</a>
+      <input type="submit" class="btn btn-success btn-right" value="Add Puppy">
     </form>
 
   </body>

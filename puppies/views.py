@@ -71,7 +71,7 @@ def showShelter(shelter_id):
 
 # Create a new page for puppies.
 @app.route('/shelter/<int:shelter_id>/puppy/new', methods=['GET', 'POST'])
-def puppyNew(shelter_id):
+def newPuppy(shelter_id):
     shelter = models.shelter_get(shelter_id)
     puppies = models.puppies_get_by_shelter(shelter_id)
     if request.method == 'POST':
@@ -83,26 +83,26 @@ def puppyNew(shelter_id):
             "weight": request.form['weight'],
         }
         models.puppy_new(shelter_id, new_puppy)
-        return render_template('shelters/show.html', shelter_id=shelter_id,
-                               shelter=shelter, puppies=puppies)
+        return render_template('shelters/show.html', shelter=shelter,
+                               puppies=puppies)
     else:
-        return render_template('puppies/new.html', shelter_id=shelter_id,
+        return render_template('puppies/new.html', shelter_id=shelter.id,
                                shelter=shelter)
 
 
 # Create a edit page for puppies.
 @app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/edit')
-def puppyEdit(shelter_id, puppy_id):
+def editPuppy(shelter_id, puppy_id):
     return "This page will show the edit page for the selected puppy"
 
 
 # Create a delete page for puppies.
 @app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/delete')
-def puppyDelete(shelter_id, puppy_id):
+def deletePuppy(shelter_id, puppy_id):
     return "This page will show the delete page for the selected puppy"
 
 
 # Create a page for each puppy.
 @app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/')
-def puppyPage(shelter_id, puppy_id):
+def showPuppy(shelter_id, puppy_id):
     return "This page will show the selected puppy"
