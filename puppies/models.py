@@ -12,3 +12,18 @@ session = DBSession()
 
 def shelter_list():
     return session.query(Shelter).all()
+
+
+def shelter_new(new_shelter):
+    newShelter = Shelter(name=new_shelter["name"],
+                         address=new_shelter["address"],
+                         city=new_shelter["city"],
+                         state=new_shelter["state"],
+                         zipCode=new_shelter["zipCode"],
+                         website=new_shelter["website"])
+    session.add(newShelter)
+    session.commit()
+
+
+def shelter_edit(shelter_id):
+    return session.query(Shelter).filter_by(id=shelter_id).one()

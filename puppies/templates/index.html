@@ -37,6 +37,9 @@ Aug 17th, 2015 -->
         <button type="button" class="btn btn-warning">Delete</button>
       </li>
       {% endfor %}
+      <li class="list-group-item">
+        <p>Do you know a shelter that we are missing?</p>
+        <a href="{{ url_for('newShelter')}}" class="btn btn-success">Add Shelter</a>
     </ul>
 
   </body>

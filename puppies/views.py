@@ -1,6 +1,7 @@
 from puppies import app
 from puppies import models
-from flask import render_template
+from flask import render_template, request, redirect, url_for
+
 
 # Create index page that shows all shelters.
 @app.route('/')
@@ -8,20 +9,33 @@ from flask import render_template
 @app.route('/shelter/')
 def index():
     shelters = models.shelter_list()
-    for s in shelters:
-        print s.name
     return render_template('index.html', shelters=shelters)
 
 
 # Create new shelter page.
-@app.route('/shelter/new')
+@app.route('/shelter/new', methods=['GET', 'POST'])
 def newShelter():
-    return "This page will show a form for a new shelter"
+    if request.method == 'POST':
+        new_shelter = {
+            "name": request.form['name'],
+            "address": request.form['address'],
+            "city": request.form['city'],
+            "state": request.form['state'],
+            "zipCode": request.form['zipCode'],
+            "website": request.form['website']
+        }
+        models.shelter_new(new_shelter)
+        return redirect(url_for('index'))
+    else:
+        return render_template('newshelter.html')
+
 
 
 # Create edit shelter page.
 @app.route('/shelter/<int:shelter_id>/edit')
 def editShelter(shelter_id):
+    shelter = shelter_edit(shelter_id)
+    print shelter
     return "This page will show a form to edit the selected shelter"
 
 

@@ -18,3 +18,21 @@ body {
   margin: 0 auto 3em auto;
   text-align: center;
 }
+
+form {
+  width: 50%;
+  margin: 0 auto 3em auto;
+}
+
+.navbar-header h3,
+.navbar-header .breadcrumb {
+  display: inline-block;
+}
+
+.breadcrumb {
+  margin: 15px 0 0 10px;
+}
+
+.btn-right {
+  float: right;
+}
