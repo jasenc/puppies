@@ -27,7 +27,7 @@ def newShelter():
         models.shelter_new(new_shelter)
         return redirect(url_for('index'))
     else:
-        return render_template('newshelter.html')
+        return render_template('shelters/new.html')
 
 
 # Create edit shelter page.
@@ -44,7 +44,7 @@ def editShelter(shelter_id):
         models.shelter_edit(edit_shelter)
         return redirect(url_for('index'))
     else:
-        return render_template('editshelter.html', shelter_id=shelter_id,
+        return render_template('shelters/edit.html', shelter_id=shelter_id,
                                shelter=edit_shelter)
 
 
@@ -56,7 +56,7 @@ def deleteShelter(shelter_id):
         models.shelter_delete(delete_shelter)
         return redirect(url_for('index'))
     else:
-        return render_template('deleteshelter.html', shelter_id=shelter_id,
+        return render_template('shelters/delete.html', shelter_id=shelter_id,
                                shelter=delete_shelter)
 
 
@@ -65,7 +65,7 @@ def deleteShelter(shelter_id):
 def showShelter(shelter_id):
     shelter = models.shelter_get(shelter_id)
     puppies = models.puppies_get_by_shelter(shelter_id)
-    return render_template('showshelter.html', shelter=shelter,
+    return render_template('shelters/show.html', shelter=shelter,
                            puppies=puppies)
 
 
