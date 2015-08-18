@@ -1,6 +1,7 @@
 from puppies import app
 from puppies import models
 from flask import render_template, request, redirect, url_for
+from puppies import forms
 
 
 # Create index page that shows all shelters.
@@ -74,20 +75,21 @@ def showShelter(shelter_id):
 def newPuppy(shelter_id):
     shelter = models.shelter_get(shelter_id)
     puppies = models.puppies_get_by_shelter(shelter_id)
+    form = forms.NewPuppyForm(request.form)
     if request.method == 'POST':
         new_puppy = {
-            "name": request.form['name'],
-            "gender": request.form['gender'],
-            "dateOfBirth": request.form['dateOfBirth'],
-            "picture": request.form['picture'],
-            "weight": request.form['weight'],
+            "name": form.name.data,
+            "gender": form.gender.data,
+            "dateOfBirth": form.dateOfBirth.data,
+            "picture": form.picture.data,
+            "weight": form.weight.data,
         }
         models.puppy_new(shelter_id, new_puppy)
         return render_template('shelters/show.html', shelter=shelter,
-                               puppies=puppies)
+                               puppies=puppies, form=form)
     else:
         return render_template('puppies/new.html', shelter_id=shelter.id,
-                               shelter=shelter)
+                               shelter=shelter, form=form)
 
 
 # Create a edit page for puppies.

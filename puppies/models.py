@@ -46,7 +46,7 @@ def puppies_get_by_shelter(shelter_id):
 def puppy_new(shelter_id, new_puppy):
     newPuppy = Puppy(name=new_puppy["name"],
                      gender=new_puppy["gender"],
-                     dateOfBirth=date(new_puppy["dateOfBirth"]),
+                     dateOfBirth=new_puppy["dateOfBirth"],
                      picture=new_puppy["picture"],
                      shelter_id=shelter_id,
                      weight=new_puppy["weight"])
