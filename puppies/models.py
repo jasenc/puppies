@@ -25,5 +25,10 @@ def shelter_new(new_shelter):
     session.commit()
 
 
-def shelter_edit(shelter_id):
+def get_shelter_edit(shelter_id):
     return session.query(Shelter).filter_by(id=shelter_id).one()
+
+
+def save_shelter_edit(edit_shelter):
+    session.add(edit_shelter)
+    session.commit()
