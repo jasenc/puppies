@@ -28,10 +28,10 @@ Aug 17th, 2015 -->
       </div>
     </nav>
 
-    <div class="col-md-6 col-md-offset-3 well">
+    <div class="col-md-6 col-md-offset-1 well">
       <h2 class='text-center'>{{ shelter.name }}</h2>
       <p class ='text-center'>Please view the list below for puppies ready to be adopted</p>
-      <ul class="list-group col-md-8 col-md-offset-2 text-center">
+      <ul class="list-group col-md-10 col-md-offset-1 text-center">
         {% for p in puppies %}
         <li class="list-group-item">
           <h3><a href="#">{{ p.name }}</a></h3>
@@ -44,6 +44,35 @@ Aug 17th, 2015 -->
           <a href="#" class="btn btn-success">Add Puppy</a>
       </ul>
     </div>
+    <div class="col-md-3 col-md-offset-1 well">
+      <h2 class='text-center'>Contact Info</h2>
+      <table class="table">
+        <tr>
+          <td>Name:</td>
+          <td>{{ shelter.name }}</td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td>{{ shelter.address }}</td>
+        </tr>
+        <tr>
+          <td>City:</td>
+          <td>{{ shelter.city }}</td>
+        </tr>
+        <tr>
+          <td>State:</td>
+          <td>{{ shelter.state }}</td>
+        </tr>
+        <tr>
+          <td>Zipcode:</td>
+          <td>{{ shelter.zipCode }}</td>
+        </tr>
+        <tr>
+          <td>Website:</td>
+          <td><a href="http://{{ shelter.website }}" target="_blank">{{ shelter.website }}</a></td>
+        </tr>
+      </table>
 
+    </div>
   </body>
 </html>
