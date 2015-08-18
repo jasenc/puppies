@@ -31,7 +31,11 @@ Aug 17th, 2015 -->
 
     <ul class="list-group">
       {% for s in shelters %}
-      <li class="list-group-item"><a href="#">{{ s.name }}</a></li>
+      <li class="list-group-item">
+        <h3><a href="#">{{ s.name }}</a></h3>
+        <button type="button" class="btn btn-info">Edit</button>
+        <button type="button" class="btn btn-warning">Delete</button>
+      </li>
       {% endfor %}
     </ul>
 

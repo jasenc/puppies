@@ -15,6 +15,6 @@ body {
 
 .list-group {
   width: 33%;
-  margin: 0 auto;
+  margin: 0 auto 3em auto;
   text-align: center;
 }
