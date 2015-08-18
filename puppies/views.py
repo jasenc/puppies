@@ -1,5 +1,6 @@
 from puppies import app
 from puppies import models
+from flask import render_template
 
 # Create index page that shows all shelters.
 @app.route('/')
@@ -9,7 +10,7 @@ def index():
     shelters = models.shelter_list()
     for s in shelters:
         print s.name
-    return "This page will show all shelters"
+    return render_template('index.html', shelters=shelters)
 
 
 # Create new shelter page.
