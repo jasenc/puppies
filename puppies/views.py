@@ -1,11 +1,14 @@
 from puppies import app
-
+from puppies import models
 
 # Create index page that shows all shelters.
 @app.route('/')
 @app.route('/index/')
 @app.route('/shelter/')
 def index():
+    shelters = models.shelter_list()
+    for s in shelters:
+        print s.name
     return "This page will show all shelters"
 
 
