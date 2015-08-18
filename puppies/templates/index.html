@@ -23,7 +23,17 @@ Aug 17th, 2015 -->
         </div>
       </div>
     </nav>
+    <div class="jumbotron">
+      <h1>Puppy Adoption!</h1>
+      <p>Welcome to the site for Puppy Adoption in the Bay Area.</p>
+      <p>Please choose from the list of shelters below to find the puppy of your dreams.</p>
+    </div>
 
+    <ul class="list-group">
+      {% for s in shelters %}
+      <li class="list-group-item"><a href="#">{{ s.name }}</a></li>
+      {% endfor %}
+    </ul>
 
   </body>
 </html>
