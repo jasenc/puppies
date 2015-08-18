@@ -33,7 +33,7 @@ def newShelter():
 # Create edit shelter page.
 @app.route('/shelter/<int:shelter_id>/edit', methods=['GET', 'POST'])
 def editShelter(shelter_id):
-    edit_shelter = models.get_shelter_edit(shelter_id)
+    edit_shelter = models.shelter_get(shelter_id)
     if request.method == 'POST':
         edit_shelter.name = request.form['name']
         edit_shelter.address = request.form['address']
@@ -41,7 +41,7 @@ def editShelter(shelter_id):
         edit_shelter.city = request.form['state']
         edit_shelter.zipCode = request.form['zipCode']
         edit_shelter.website = request.form['website']
-        models.save_shelter_edit(edit_shelter)
+        models.shelter_edit(edit_shelter)
         return redirect(url_for('index'))
     else:
         return render_template('editshelter.html', shelter_id=shelter_id,
@@ -49,9 +49,15 @@ def editShelter(shelter_id):
 
 
 # Create a delete comfirmation page.
-@app.route('/shelter/<int:shelter_id>/delete')
+@app.route('/shelter/<int:shelter_id>/delete', methods=['GET', 'POST'])
 def deleteShelter(shelter_id):
-    return "This page will ask for confirmation to delete the selected shelter"
+    delete_shelter = models.shelter_get(shelter_id)
+    if request.method == 'POST':
+        models.shelter_delete(delete_shelter)
+        return redirect(url_for('index'))
+    else:
+        return render_template('deleteshelter.html', shelter_id=shelter_id,
+                               shelter=delete_shelter)
 
 
 # Create a page for each shelter.
