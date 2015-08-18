@@ -37,3 +37,7 @@ def shelter_edit(edit_shelter):
 def shelter_delete(delete_shelter):
     session.delete(delete_shelter)
     session.commit()
+
+
+def puppies_get_by_shelter(shelter_id):
+    return session.query(Puppy).filter_by(shelter_id=shelter_id)
