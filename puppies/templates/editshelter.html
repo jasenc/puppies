@@ -27,7 +27,7 @@ Aug 17th, 2015 -->
         </div>
       </div>
     </nav>
-    <form class="well bs-component clearfix" action="{{ url_for('newShelter') }}" method="POST">
+    <form class="well bs-component clearfix" action="{{ url_for('editShelter', shelter_id=shelter_id) }}" method="POST">
       <legend>New Shelter</legend>
       <div class="form-group col-xs-12">
         <label for="shelter-name">Name</label>

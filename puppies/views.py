@@ -33,19 +33,19 @@ def newShelter():
 # Create edit shelter page.
 @app.route('/shelter/<int:shelter_id>/edit', methods=['GET', 'POST'])
 def editShelter(shelter_id):
-    shelter = models.get_shelter_edit(shelter_id)
+    edit_shelter = models.get_shelter_edit(shelter_id)
     if request.method == 'POST':
-        shelter.name = request.form['name']
-        shelter.address = request.form['address']
-        shelter.city = request.form['city']
-        shelter.city = request.form['state']
-        shelter.zipCode = request.form['zipCode']
-        shelter.website = request.form['website']
-        models.save_shelter_edit(new_shelter)
+        edit_shelter.name = request.form['name']
+        edit_shelter.address = request.form['address']
+        edit_shelter.city = request.form['city']
+        edit_shelter.city = request.form['state']
+        edit_shelter.zipCode = request.form['zipCode']
+        edit_shelter.website = request.form['website']
+        models.save_shelter_edit(edit_shelter)
         return redirect(url_for('index'))
     else:
         return render_template('editshelter.html', shelter_id=shelter_id,
-                               shelter=shelter)
+                               shelter=edit_shelter)
 
 
 # Create a delete comfirmation page.
