@@ -69,12 +69,6 @@ def showShelter(shelter_id):
                            puppies=puppies)
 
 
-# Create a page for each puppy.
-@app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/')
-def puppyPage(shelter_id, puppy_id):
-    return "This page will show the selected puppy"
-
-
 # Create a new page for puppies.
 @app.route('/shelter/<int:shelter_id>/puppy/new')
 def puppyNew(shelter_id):
@@ -91,3 +85,9 @@ def puppyEdit(shelter_id, puppy_id):
 @app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/delete')
 def puppyDelete(shelter_id, puppy_id):
     return "This page will show the delete page for the selected puppy"
+
+
+# Create a page for each puppy.
+@app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/')
+def puppyPage(shelter_id, puppy_id):
+    return "This page will show the selected puppy"
