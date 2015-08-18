@@ -29,18 +29,20 @@ Aug 17th, 2015 -->
       <p>Please choose from the list of shelters below to find the puppy of your dreams.</p>
     </div>
 
-    <ul class="list-group">
-      {% for s in shelters %}
-      <li class="list-group-item">
-        <h3><a href="{{ url_for('showShelter', shelter_id=s.id ) }}">{{ s.name }}</a></h3>
-        <a href="{{ url_for('editShelter', shelter_id=s.id) }}" class="btn btn-info">Edit</a>
-        <a href="{{ url_for('deleteShelter', shelter_id=s.id) }}" class="btn btn-warning">Delete</a>
-      </li>
-      {% endfor %}
-      <li class="list-group-item">
-        <p>Do you know a shelter that we are missing?</p>
-        <a href="{{ url_for('newShelter')}}" class="btn btn-success">Add Shelter</a>
-    </ul>
+    <div class="col-md-6 col-md-offset-3 well">
+      <ul class="list-group col-md-8 col-md-offset-2 text-center">
+        {% for s in shelters %}
+        <li class="list-group-item">
+          <h3><a href="{{ url_for('showShelter', shelter_id=s.id ) }}">{{ s.name }}</a></h3>
+          <a href="{{ url_for('editShelter', shelter_id=s.id) }}" class="btn btn-info">Edit</a>
+          <a href="{{ url_for('deleteShelter', shelter_id=s.id) }}" class="btn btn-warning">Delete</a>
+        </li>
+        {% endfor %}
+        <li class="list-group-item">
+          <p>Do you know a shelter that we are missing?</p>
+          <a href="{{ url_for('newShelter')}}" class="btn btn-success">Add Shelter</a>
+      </ul>
+    </div>
 
   </body>
 </html>
