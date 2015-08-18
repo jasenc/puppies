@@ -41,7 +41,7 @@ Aug 17th, 2015 -->
         {% endfor %}
         <li class="list-group-item">
           <p>Do you know a puppy in this shelter that we are missing?</p>
-          <a href="#" class="btn btn-success">Add Puppy</a>
+          <a href="{{ url_for('puppyNew', shelter_id=shelter.id) }}" class="btn btn-success">Add Puppy</a>
       </ul>
     </div>
     <div class="col-md-3 col-md-offset-1 well">

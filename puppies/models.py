@@ -41,3 +41,14 @@ def shelter_delete(delete_shelter):
 
 def puppies_get_by_shelter(shelter_id):
     return session.query(Puppy).filter_by(shelter_id=shelter_id)
+
+
+def puppy_new(shelter_id, new_puppy):
+    newPuppy = Puppy(name=new_puppy["name"],
+                     gender=new_puppy["gender"],
+                     dateOfBirth=new_puppy["dateOfBirth"],
+                     picture=new_puppy["picture"],
+                     shelter_id=shelter_id,
+                     weight=new_puppy["weight"])
+    session.add(newShelter)
+    session.commit()

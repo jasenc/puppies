@@ -70,9 +70,24 @@ def showShelter(shelter_id):
 
 
 # Create a new page for puppies.
-@app.route('/shelter/<int:shelter_id>/puppy/new')
+@app.route('/shelter/<int:shelter_id>/puppy/new', methods=['GET', 'POST'])
 def puppyNew(shelter_id):
-    return "This page will show the new puppy page"
+    shelter = models.shelter_get(shelter_id)
+    puppies = models.puppies_get_by_shelter(shelter_id)
+    if request.method == 'POST':
+        new_puppy = {
+            "name": request.form['name'],
+            "gender": request.form['gender'],
+            "dateOfBirth": request.form['dateOfBirth'],
+            "picture": request.form['picture'],
+            "weight": request.form['weight'],
+        }
+        models.puppy_new(shelter_id, new_puppy)
+        return render_template('shelters/show.html', shelter_id=shelter_id,
+                               shelter=shelter, puppies=puppies)
+    else:
+        return render_template('puppies/new.html', shelter_id=shelter_id,
+                               shelter=shelter)
 
 
 # Create a edit page for puppies.
