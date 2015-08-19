@@ -22,7 +22,8 @@ Aug 17th, 2015 -->
           <h3>Puppy Adoption Website</h3>
           <ol class="breadcrumb">
             <li><a href="{{ url_for('index')}}">Home</a></li>
-            <li class="active">Delete Shelter</li>
+            <li><a href="{{ url_for('showShelter', shelter_id=shelter.id) }}">{{ shelter.name }}</a></li>
+            <li class="active">Delete Puppy</li>
           </ol>
         </div>
       </div>
