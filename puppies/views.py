@@ -76,7 +76,7 @@ def newPuppy(shelter_id):
     shelter = models.shelter_get(shelter_id)
     puppies = models.puppies_get_by_shelter(shelter_id)
     form = forms.NewPuppyForm(request.form)
-    if request.method == 'POST':
+    if request.method == 'POST' and form.validate():
         new_puppy = {
             "name": form.name.data,
             "gender": form.gender.data,
