@@ -45,8 +45,7 @@ def editShelter(shelter_id):
         models.shelter_edit(edit_shelter)
         return redirect(url_for('index'))
     else:
-        return render_template('shelters/edit.html', shelter_id=shelter_id,
-                               shelter=edit_shelter)
+        return render_template('shelters/edit.html', shelter=edit_shelter)
 
 
 # Create a delete comfirmation page.
