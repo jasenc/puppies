@@ -3,7 +3,7 @@ from wtforms import StringField, IntegerField, validators
 from wtforms.fields.html5 import DateField
 
 
-class NewPuppyForm(Form):
+class PuppyForm(Form):
     name = StringField('Name', [validators.InputRequired(),
                                 validators.Length(max=80,
                                 message="Let's keep this to 80 characters!")])
