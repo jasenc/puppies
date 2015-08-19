@@ -16,36 +16,39 @@ def index():
 # Create new shelter page.
 @app.route('/shelter/new', methods=['GET', 'POST'])
 def newShelter():
-    if request.method == 'POST':
+    form = forms.ShelterForm(request.form)
+    if request.method == 'POST' and form.validate():
         new_shelter = {
-            "name": request.form['name'],
-            "address": request.form['address'],
-            "city": request.form['city'],
-            "state": request.form['state'],
-            "zipCode": request.form['zipCode'],
-            "website": request.form['website']
+            "name": form.name.data,
+            "address": form.address.data,
+            "city": form.city.data,
+            "state": form.state.data,
+            "zipCode": form.zipCode.data,
+            "website": form.website.data,
         }
         models.shelter_new(new_shelter)
         return redirect(url_for('index'))
     else:
-        return render_template('shelters/new.html')
+        return render_template('shelters/new.html', form=form)
 
 
 # Create edit shelter page.
 @app.route('/shelter/<int:shelter_id>/edit', methods=['GET', 'POST'])
 def editShelter(shelter_id):
     edit_shelter = models.shelter_get(shelter_id)
-    if request.method == 'POST':
-        edit_shelter.name = request.form['name']
-        edit_shelter.address = request.form['address']
-        edit_shelter.city = request.form['city']
-        edit_shelter.state = request.form['state']
-        edit_shelter.zipCode = request.form['zipCode']
-        edit_shelter.website = request.form['website']
+    form = forms.ShelterForm(request.form)
+    if request.method == 'POST' and form.validate():
+        edit_shelter.name = form.name.data
+        edit_shelter.address = form.address.data
+        edit_shelter.city = form.city.data
+        edit_shelter.state = form.state.data
+        edit_shelter.zipCode = form.zipCode.data
+        edit_shelter.website = form.website.data
         models.shelter_edit(edit_shelter)
         return redirect(url_for('index'))
     else:
-        return render_template('shelters/edit.html', shelter=edit_shelter)
+        return render_template('shelters/edit.html', shelter=edit_shelter,
+                               form=form)
 
 
 # Create a delete comfirmation page.

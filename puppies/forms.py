@@ -3,6 +3,29 @@ from wtforms import StringField, IntegerField, validators
 from wtforms.fields.html5 import DateField
 
 
+class ShelterForm(Form):
+    name = StringField('Name', [validators.InputRequired(),
+                                validators.Length(max=80,
+                                message="Let's keep this to 80 characters!")])
+    address = StringField('Address', [validators.InputRequired(),
+                                      validators.Length(max=80,
+                                      message="Let's keep this to 250 \
+                                               characters!")])
+    city = StringField('City', [validators.InputRequired(),
+                                validators.Length(max=80,
+                                message="Sorry, cities are at most 80\
+                                         characters!")])
+    state = StringField('State', [validators.InputRequired(),
+                                  validators.Length(max=2,
+                                  message="Sorry, states are 2\
+                                           characters!")])
+    zipCode = StringField('zipCode', [validators.InputRequired(),
+                                      validators.Length(max=6,
+                                      message="Sorry, zipCodes are at most 10\
+                                               characters!")])
+    website = StringField('Website', [validators.InputRequired()])
+
+
 class PuppyForm(Form):
     name = StringField('Name', [validators.InputRequired(),
                                 validators.Length(max=80,
