@@ -22,51 +22,52 @@ Aug 17th, 2015 -->
           <h3>Puppy Adoption Website</h3>
           <ol class="breadcrumb">
             <li><a href="{{ url_for('index')}}">Home</a></li>
-            <li class="active">Edit Shelter</li>
+            <li><a href="{{ url_for('showShelter', shelter_id=shelter.id) }}">{{ shelter.name }}</a></li>
+            <li class="active">Edit Puppy</li>
           </ol>
         </div>
       </div>
     </nav>
-    <form class="well bs-component clearfix col-md-6 col-md-offset-1" action="{{ url_for('newPuppy', shelter_id=shelter.id) }}" method="POST">
+    <form class="well bs-component clearfix col-md-6 col-md-offset-1" action="{{ url_for('editPuppy', shelter_id=shelter.id, puppy_id=puppy.id) }}" method="POST">
       <legend>New Puppy for {{ shelter.name }}</legend>
       {{ form.csrf_token }}
       <div class="form-group col-xs-12">
         <label for="puppy-name">Name</label>
-        {{ form.name(class="form-control", placeholder="Name") }}
+        {{ form.name(class="form-control", value=puppy.name) }}
         {% if form.name.errors %}
           <div class="alert alert-info" role="alert">{% for error in form.name.errors %}{{ error }}{% endfor %}</div>
         {% endif %}
       </div>
       <div class="form-group col-xs-4">
         <label for="puppy-gender">Gender</label>
-        {{ form.gender(class="form-control", placeholder="Gender") }}
+        {{ form.gender(class="form-control", value=puppy.gender) }}
         {% if form.gender.errors %}
           <div class="alert alert-info" role="alert">{% for error in form.gender.errors %}{{ error }}{% endfor %}</div>
         {% endif %}
       </div>
       <div class="form-group col-xs-4">
         <label for="puppy-dateOfBirth">Date of Birth (YYYY/MM/DD)</label>
-        {{ form.dateOfBirth(class="form-control", placeholder="YYYY/MM/DD") }}
+        {{ form.dateOfBirth(class="form-control", value=puppy.dateOfBirth) }}
         {% if form.dateOfBirth.errors %}
           <div class="alert alert-info" role="alert">{% for error in form.dateOfBirth.errors %}{{ error }}{% endfor %}</div>
         {% endif %}
       </div>
       <div class="form-group col-xs-4">
         <label for="puppy-weight">Weight</label>
-        {{ form.weight(class="form-control", placeholder="Weight") }}
+        {{ form.weight(class="form-control", value=int_puppy_weight) }}
         {% if form.weight.errors %}
           <div class="alert alert-info" role="alert">{% for error in form.weight.errors %}{{ error }}{% endfor %}</div>
         {% endif %}
       </div>
       <div class="form-group col-xs-12">
         <label for="puppy-picture">Picture</label>
-        {{ form.picture(class="form-control", placeholder="Picture") }}
+        {{ form.picture(class="form-control", value=puppy.picture) }}
         {% if form.picture.errors %}
           <div class="alert alert-info" role="alert">{% for error in form.picture.errors %}{{ error }}{% endfor %}</div>
         {% endif %}
       </div>
       <a href="{{ url_for('showShelter', shelter_id=shelter.id) }}" class="btn btn-default btn-left">Cancel</a>
-      <input type="submit" class="btn btn-success btn-right" value="Add Puppy">
+      <input type="submit" class="btn btn-success btn-right" value="Edit Puppy">
     </form>
     <div class="col-md-3 col-md-offset-1 well">
       <h2 class='text-center'>Contact Info</h2>

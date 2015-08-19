@@ -91,24 +91,27 @@ def newPuppy(shelter_id):
 
 
 # Create a edit page for puppies.
-@app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/edit')
+@app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/edit',
+           methods=['GET', 'POST'])
 def editPuppy(shelter_id, puppy_id):
     shelter = models.shelter_get(shelter_id)
-    edit_puppy = models.puppies_get(puppy_id)
+    puppies = models.puppies_get_by_shelter(shelter_id)
+    edit_puppy = models.puppy_get(puppy_id)
     form = forms.PuppyForm(request.form)
+    int_puppy_weight = int(edit_puppy.weight)
     if request.method == 'POST' and form.validate():
-        new_puppy = {
-            "name": form.name.data,
-            "gender": form.gender.data,
-            "dateOfBirth": form.dateOfBirth.data,
-            "picture": form.picture.data,
-            "weight": form.weight.data,
-        }
-        models.puppy_new(shelter_id, new_puppy)
+        edit_puppy.name = form.name.data
+        edit_puppy.gender = form.gender.data
+        edit_puppy.dateOfBirth = form.dateOfBirth.data
+        edit_puppy.picture = form.picture.data
+        edit_puppy.weight = form.weight.data
+        models.puppy_edit(edit_puppy)
         return render_template('shelters/show.html', shelter=shelter,
                                puppies=puppies, form=form)
     else:
-        return render_template('puppies/new.html', shelter=shelter, form=form)
+        return render_template('puppies/edit.html', shelter=shelter,
+                               puppy=edit_puppy, form=form,
+                               int_puppy_weight=int_puppy_weight)
 
 
 # Create a delete page for puppies.

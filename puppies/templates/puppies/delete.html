@@ -27,7 +27,7 @@ Aug 17th, 2015 -->
         </div>
       </div>
     </nav>
-    <form class="well bs-component clearfix" action="{{ url_for('deleteShelter', shelter_id=shelter_id) }}" method="POST">
+    <form class="well bs-component clearfix col-md-6 col-md-offset-1" action="{{ url_for('deletePuppy', shelter_id=shelter.id, puppy_id=puppy.id) }}" method="POST">
       <legend>Delete Shelter</legend>
       <div class="form-group col-xs-12">
         <label for="shelter-name">Name</label>
@@ -36,6 +36,33 @@ Aug 17th, 2015 -->
       <a href="{{ url_for('index') }}" class="btn btn-default btn-left">Cancel</a>
       <input type="submit" class="btn btn-danger btn-right" value="Delete Shelter">
     </form>
-
+    <div class="col-md-3 col-md-offset-1 well">
+      <h2 class='text-center'>Contact Info</h2>
+      <table class="table">
+        <tr>
+          <td>Name:</td>
+          <td>{{ shelter.name }}</td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td>{{ shelter.address }}</td>
+        </tr>
+        <tr>
+          <td>City:</td>
+          <td>{{ shelter.city }}</td>
+        </tr>
+        <tr>
+          <td>State:</td>
+          <td>{{ shelter.state }}</td>
+        </tr>
+        <tr>
+          <td>Zipcode:</td>
+          <td>{{ shelter.zipCode }}</td>
+        </tr>
+        <tr>
+          <td>Website:</td>
+          <td><a href="http://{{ shelter.website }}" target="_blank">{{ shelter.website }}</a></td>
+        </tr>
+      </table>
   </body>
 </html>

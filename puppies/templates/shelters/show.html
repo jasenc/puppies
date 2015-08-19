@@ -35,7 +35,7 @@ Aug 17th, 2015 -->
         {% for p in puppies %}
         <li class="list-group-item">
           <h3><a href="#">{{ p.name }}</a></h3>
-          <a href="#" class="btn btn-info">Edit</a>
+          <a href="{{ url_for('editPuppy', shelter_id=shelter.id, puppy_id=p.id) }}" class="btn btn-info">Edit</a>
           <a href="#" class="btn btn-warning">Delete</a>
         </li>
         {% endfor %}
