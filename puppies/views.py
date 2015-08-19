@@ -87,7 +87,7 @@ def newPuppy(shelter_id):
         }
         models.puppy_new(shelter_id, new_puppy)
         return render_template('shelters/show.html', shelter=shelter,
-                               puppies=puppies, form=form)
+                               puppies=puppies)
     else:
         return render_template('puppies/new.html', shelter=shelter, form=form)
 
@@ -112,7 +112,7 @@ def editPuppy(shelter_id, puppy_id):
                                puppies=puppies, form=form)
     else:
         return render_template('puppies/edit.html', shelter=shelter,
-                               puppy=edit_puppy, form=form,
+                               puppy=edit_puppy,
                                int_puppy_weight=int_puppy_weight)
 
 
