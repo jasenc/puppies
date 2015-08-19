@@ -114,9 +114,17 @@ def editPuppy(shelter_id, puppy_id):
 
 
 # Create a delete page for puppies.
-@app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/delete')
+@app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/delete',
+           methods=['GET', 'POST'])
 def deletePuppy(shelter_id, puppy_id):
-    return "This page will show the delete page for the selected puppy"
+    delete_puppy = models.puppy_get(puppy_id)
+    shelter = models.shelter_get(shelter_id)
+    if request.method == 'POST':
+        models.puppy_delete(delete_puppy)
+        return redirect(url_for('showShelter', shelter_id=shelter.id))
+    else:
+        return render_template('puppies/delete.html', shelter=shelter,
+                               puppy=delete_puppy)
 
 
 # Create a page for each puppy.

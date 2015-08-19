@@ -31,10 +31,10 @@ Aug 17th, 2015 -->
       <legend>Delete Shelter</legend>
       <div class="form-group col-xs-12">
         <label for="shelter-name">Name</label>
-        <input type="text" class="form-control"  id="shelter-name" value="{{ shelter.name }}" name="name" disabled>
+        <input type="text" class="form-control"  id="shelter-name" value="{{ puppy.name }}" name="name" disabled>
       </div>
-      <a href="{{ url_for('index') }}" class="btn btn-default btn-left">Cancel</a>
-      <input type="submit" class="btn btn-danger btn-right" value="Delete Shelter">
+      <a href="{{ url_for('showShelter', shelter_id=shelter.id) }}" class="btn btn-default btn-left">Cancel</a>
+      <input type="submit" class="btn btn-danger btn-right" value="Delete Puppy">
     </form>
     <div class="col-md-3 col-md-offset-1 well">
       <h2 class='text-center'>Contact Info</h2>

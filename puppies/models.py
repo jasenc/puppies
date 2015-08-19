@@ -61,3 +61,8 @@ def puppy_get(puppy_id):
 def puppy_edit(edit_puppy):
     session.add(edit_puppy)
     session.commit()
+
+
+def puppy_delete(delete_puppy):
+    session.delete(delete_puppy)
+    session.commit()
