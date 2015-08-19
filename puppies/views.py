@@ -39,7 +39,7 @@ def editShelter(shelter_id):
         edit_shelter.name = request.form['name']
         edit_shelter.address = request.form['address']
         edit_shelter.city = request.form['city']
-        edit_shelter.city = request.form['state']
+        edit_shelter.state = request.form['state']
         edit_shelter.zipCode = request.form['zipCode']
         edit_shelter.website = request.form['website']
         models.shelter_edit(edit_shelter)
@@ -93,7 +93,22 @@ def newPuppy(shelter_id):
 # Create a edit page for puppies.
 @app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/edit')
 def editPuppy(shelter_id, puppy_id):
-    return "This page will show the edit page for the selected puppy"
+    shelter = models.shelter_get(shelter_id)
+    edit_puppy = models.puppies_get(puppy_id)
+    form = forms.PuppyForm(request.form)
+    if request.method == 'POST' and form.validate():
+        new_puppy = {
+            "name": form.name.data,
+            "gender": form.gender.data,
+            "dateOfBirth": form.dateOfBirth.data,
+            "picture": form.picture.data,
+            "weight": form.weight.data,
+        }
+        models.puppy_new(shelter_id, new_puppy)
+        return render_template('shelters/show.html', shelter=shelter,
+                               puppies=puppies, form=form)
+    else:
+        return render_template('puppies/new.html', shelter=shelter, form=form)
 
 
 # Create a delete page for puppies.

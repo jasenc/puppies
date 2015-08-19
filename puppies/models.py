@@ -52,3 +52,7 @@ def puppy_new(shelter_id, new_puppy):
                      weight=new_puppy["weight"])
     session.add(newPuppy)
     session.commit()
+
+
+def puppy_get(puppy_id):
+    return session.query(Puppy).filter_by(id=puppy_id).one()
