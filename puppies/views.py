@@ -88,8 +88,7 @@ def newPuppy(shelter_id):
         return render_template('shelters/show.html', shelter=shelter,
                                puppies=puppies, form=form)
     else:
-        return render_template('puppies/new.html', shelter_id=shelter.id,
-                               shelter=shelter, form=form)
+        return render_template('puppies/new.html', shelter=shelter, form=form)
 
 
 # Create a edit page for puppies.
