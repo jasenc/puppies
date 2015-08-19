@@ -46,7 +46,7 @@ Aug 17th, 2015 -->
         {% endif %}
       </div>
       <div class="form-group col-xs-4">
-        <label for="puppy-dateOfBirth">Date of Birth (YYYY/MM/DD)</label>
+        <label for="puppy-dateOfBirth">Date of Birth</label>
         {{ form.dateOfBirth(class="form-control", placeholder="YYYY/MM/DD") }}
         {% if form.dateOfBirth.errors %}
           <div class="alert alert-info" role="alert">{% for error in form.dateOfBirth.errors %}{{ error }}{% endfor %}</div>
