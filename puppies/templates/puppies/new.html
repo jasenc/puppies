@@ -28,7 +28,7 @@ Aug 17th, 2015 -->
         </div>
       </div>
     </nav>
-    <form class="well bs-component clearfix" action="{{ url_for('newPuppy', shelter_id=shelter.id) }}" method="POST">
+    <form class="well bs-component clearfix col-md-6 col-md-offset-1" action="{{ url_for('newPuppy', shelter_id=shelter.id) }}" method="POST">
       <legend>New Puppy for {{ shelter.name }}</legend>
       {{ form.csrf_token }}
       <div class="form-group col-xs-12">
@@ -69,5 +69,35 @@ Aug 17th, 2015 -->
       <a href="{{ url_for('showShelter', shelter_id=shelter.id) }}" class="btn btn-default btn-left">Cancel</a>
       <input type="submit" class="btn btn-success btn-right" value="Add Puppy">
     </form>
+    <div class="col-md-3 col-md-offset-1 well">
+      <h2 class='text-center'>Contact Info</h2>
+      <table class="table">
+        <tr>
+          <td>Name:</td>
+          <td>{{ shelter.name }}</td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td>{{ shelter.address }}</td>
+        </tr>
+        <tr>
+          <td>City:</td>
+          <td>{{ shelter.city }}</td>
+        </tr>
+        <tr>
+          <td>State:</td>
+          <td>{{ shelter.state }}</td>
+        </tr>
+        <tr>
+          <td>Zipcode:</td>
+          <td>{{ shelter.zipCode }}</td>
+        </tr>
+        <tr>
+          <td>Website:</td>
+          <td><a href="http://{{ shelter.website }}" target="_blank">{{ shelter.website }}</a></td>
+        </tr>
+      </table>
+
+    </div>
   </body>
 </html>
