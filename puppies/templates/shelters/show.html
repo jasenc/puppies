@@ -34,7 +34,7 @@ Aug 17th, 2015 -->
       <ul class="list-group col-md-10 col-md-offset-1 text-center">
         {% for p in puppies %}
         <li class="list-group-item">
-          <h3><a href="#">{{ p.name }}</a></h3>
+          <h3><a href="{{ url_for('showPuppy', shelter_id=shelter.id, puppy_id=p.id) }}">{{ p.name }}</a></h3>
           <a href="{{ url_for('editPuppy', shelter_id=shelter.id, puppy_id=p.id) }}" class="btn btn-info">Edit</a>
           <a href="{{ url_for('deletePuppy', shelter_id=shelter.id, puppy_id=p.id) }}" class="btn btn-warning">Delete</a>
         </li>

@@ -130,4 +130,7 @@ def deletePuppy(shelter_id, puppy_id):
 # Create a page for each puppy.
 @app.route('/shelter/<int:shelter_id>/puppy/<int:puppy_id>/')
 def showPuppy(shelter_id, puppy_id):
-    return "This page will show the selected puppy"
+    shelter = models.shelter_get(shelter_id)
+    puppy = models.puppy_get(puppy_id)
+    return render_template('puppies/show.html', shelter=shelter,
+                           puppy=puppy)

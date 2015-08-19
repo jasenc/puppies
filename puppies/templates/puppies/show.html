@@ -22,26 +22,20 @@ Aug 17th, 2015 -->
           <h3>Puppy Adoption Website</h3>
           <ol class="breadcrumb">
             <li><a href="{{ url_for('index')}}">Home</a></li>
-            <li class="active">{{ shelter.name }}</li>
+            <li><a href="{{ url_for('showShelter', shelter_id=shelter.id) }}">{{ shelter.name }}</a></li>
+            <li class="active">{{ puppy.name }}</li>
           </ol>
         </div>
       </div>
     </nav>
 
     <div class="col-md-6 col-md-offset-1 well">
-      <h2 class='text-center'>{{ shelter.name }}</h2>
-      <p class ='text-center'>Please view the list below for puppies ready to be adopted</p>
+      <h2 class='text-center'>{{ puppy.name }}</h2>
       <ul class="list-group col-md-10 col-md-offset-1 text-center">
-        {% for p in puppies %}
-        <li class="list-group-item">
-          <h3><a href="#">{{ p.name }}</a></h3>
-          <a href="#" class="btn btn-info">Edit</a>
-          <a href="#" class="btn btn-warning">Delete</a>
-        </li>
-        {% endfor %}
-        <li class="list-group-item">
-          <p>Do you know a puppy in this shelter that we are missing?</p>
-          <a href="#" class="btn btn-success">Add Puppy</a>
+          <li class="list-group-item">{{ puppy.gender }}</li>
+          <li class="list-group-item">{{ puppy.dateOfBirth }}</li>
+          <li class="list-group-item"><img src="{{ puppy.picture }}"></li>
+          <li class="list-group-item">{{ puppy.weight }}</li>
       </ul>
     </div>
     <div class="col-md-3 col-md-offset-1 well">
