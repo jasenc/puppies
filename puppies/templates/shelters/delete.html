@@ -27,7 +27,7 @@ Aug 17th, 2015 -->
         </div>
       </div>
     </nav>
-    <form class="well bs-component clearfix" action="{{ url_for('deleteShelter', shelter_id=shelter_id) }}" method="POST">
+    <form class="well bs-component clearfix" action="{{ url_for('deleteShelter', shelter_id=shelter.id) }}" method="POST">
       <legend>Delete Shelter</legend>
       <div class="form-group col-xs-12">
         <label for="shelter-name">Name</label>

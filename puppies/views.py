@@ -56,8 +56,7 @@ def deleteShelter(shelter_id):
         models.shelter_delete(delete_shelter)
         return redirect(url_for('index'))
     else:
-        return render_template('shelters/delete.html', shelter_id=shelter_id,
-                               shelter=delete_shelter)
+        return render_template('shelters/delete.html', shelter=delete_shelter)
 
 
 # Create a page for each shelter.
