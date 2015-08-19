@@ -1,3 +1,9 @@
+/*
+===================================
+Custom Styles & Bootstrap Overrides
+===================================
+*/
+
 body {
   background: -webkit-linear-gradient(90deg, #e53935 10%, #e35d5b 90%); /* Chrome 10+, Saf5.1+ */
   background:    -moz-linear-gradient(90deg, #e53935 10%, #e35d5b 90%); /* FF3.6+ */
