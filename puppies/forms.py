@@ -4,11 +4,12 @@ from wtforms.fields.html5 import DateField
 
 
 class ShelterForm(Form):
+    # Create a name form with a max length of 80 characters to match the DB.
     name = StringField('Name', [validators.InputRequired(),
                                 validators.Length(max=80,
                                 message="Let's keep this to 80 characters!")])
     address = StringField('Address', [validators.InputRequired(),
-                                      validators.Length(max=80,
+                                      validators.Length(max=250,
                                       message="Let's keep this to 250 \
                                                characters!")])
     city = StringField('City', [validators.InputRequired(),

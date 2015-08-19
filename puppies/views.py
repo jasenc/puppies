@@ -16,8 +16,11 @@ def index():
 # Create new shelter page.
 @app.route('/shelter/new', methods=['GET', 'POST'])
 def newShelter():
+    # Get the form for shelters out of the forms module.
     form = forms.ShelterForm(request.form)
+    # If the form is submitted via POST and is validated:
     if request.method == 'POST' and form.validate():
+        # Create a new shelter object to store all data from the form.
         new_shelter = {
             "name": form.name.data,
             "address": form.address.data,
@@ -26,27 +29,37 @@ def newShelter():
             "zipCode": form.zipCode.data,
             "website": form.website.data,
         }
+        # Pass that object to the DB via the models module.
         models.shelter_new(new_shelter)
+        # Redirect to the index page.
         return redirect(url_for('index'))
     else:
+        # If the route is requested via GET, render the new shelter page.
         return render_template('shelters/new.html', form=form)
 
 
 # Create edit shelter page.
 @app.route('/shelter/<int:shelter_id>/edit', methods=['GET', 'POST'])
 def editShelter(shelter_id):
+    # Get the shelter out of the DB.
     edit_shelter = models.shelter_get(shelter_id)
+    # Get the form out of the form module.
     form = forms.ShelterForm(request.form)
+    # If the form is submitted via POST and is validated:
     if request.method == 'POST' and form.validate():
+        # Update the shelter with the form data
         edit_shelter.name = form.name.data
         edit_shelter.address = form.address.data
         edit_shelter.city = form.city.data
         edit_shelter.state = form.state.data
         edit_shelter.zipCode = form.zipCode.data
         edit_shelter.website = form.website.data
+        # Send the updated shelter back to the DB.
         models.shelter_edit(edit_shelter)
+        # Redirect to the index page.
         return redirect(url_for('index'))
     else:
+        # If the route is requested via GET, render the edit shelter page.
         return render_template('shelters/edit.html', shelter=edit_shelter,
                                form=form)
 
@@ -54,23 +67,32 @@ def editShelter(shelter_id):
 # Create a delete comfirmation page.
 @app.route('/shelter/<int:shelter_id>/delete', methods=['GET', 'POST'])
 def deleteShelter(shelter_id):
+    # Get the shelter to be deleted out of the DB.
     delete_shelter = models.shelter_get(shelter_id)
     if request.method == 'POST':
+        # Delete the shelter out of the DB.
         models.shelter_delete(delete_shelter)
+        # Redirect to the index page.
         return redirect(url_for('index'))
     else:
+        # If the route is requested via GET, render the delete shelter page.
         return render_template('shelters/delete.html', shelter=delete_shelter)
 
 
 # Create a page for each shelter.
 @app.route('/shelter/<int:shelter_id>/')
 def showShelter(shelter_id):
+    # Get the selected shelter from the DB.
     shelter = models.shelter_get(shelter_id)
+    # Get the puppies for that shelter out of the DB.
     puppies = models.puppies_get_by_shelter(shelter_id)
+    # Show the information on the shetlers show page.
     return render_template('shelters/show.html', shelter=shelter,
                            puppies=puppies)
 
 
+# The following routes are essentially repeats of the previous ones but with
+# more arguments passed around.
 # Create a new page for puppies.
 @app.route('/shelter/<int:shelter_id>/puppy/new', methods=['GET', 'POST'])
 def newPuppy(shelter_id):
