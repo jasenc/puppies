@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-
-<!-- Jasen Carroll
-Aug 17th, 2015 -->
-<html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Puppy Adoption</title>
-    <meta name="description" content="Adoption website for Puppies in the Bay Area">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='normalize.css')}}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/lumen/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}">
-  </head>
-  <body>
+{% extends "layout.html" %}
+  {% block body %}
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -65,5 +49,5 @@ Aug 17th, 2015 -->
           <td><a href="http://{{ shelter.website }}" target="_blank">{{ shelter.website }}</a></td>
         </tr>
       </table>
-  </body>
+  {% endblock %}
 </html>

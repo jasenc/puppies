@@ -134,7 +134,7 @@ def editPuppy(shelter_id, puppy_id):
                                puppies=puppies, form=form)
     else:
         return render_template('puppies/edit.html', shelter=shelter,
-                               puppy=edit_puppy,
+                               puppy=edit_puppy, form=form,
                                int_puppy_weight=int_puppy_weight)
 
 
