@@ -1,6 +1,6 @@
 # Puppy Adoption Website
 
-This website is being developed using Python, Flask, a few extensions that will be outlined in requirements.txt, SQLAlchemy, and Bootstrap. 
+This website is being developed using Python, Flask, a few extensions that will be outlined in requirements.txt, SQLAlchemy, and Bootstrap.
 
 Currently the database is loaded with some basic information for Shelters and Puppies and displays all information including CRUD functionality for both Shelters and Puppies.
 
@@ -32,9 +32,9 @@ These are listed in no particular order.
 	* User Authentification
 	* Testing & Performance
 	* Deployment
-	
+
 ## Author
 
 Jasen Carroll  
-jasen.c8@gmail.com  
+jasen.c@icloud.com
 August 16th, 2015
