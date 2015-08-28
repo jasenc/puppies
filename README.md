@@ -29,7 +29,7 @@ These are listed in no particular order.
 	* Pagination
 	* Logging
 	* Email (and potentially SMS) support
-	* User Authentification
+	* User Authentication
 	* Testing & Performance
 	* Deployment
 
